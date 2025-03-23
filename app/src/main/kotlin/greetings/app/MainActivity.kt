@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import greetings.app.screens.Heart
+import greetings.app.screens.ILoveYouScreen
 import greetings.app.ui.theme.GreetingsTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             GreetingsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Heart(
+                    ILoveYouScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

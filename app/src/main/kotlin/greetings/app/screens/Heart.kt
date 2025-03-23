@@ -21,29 +21,34 @@ import kotlin.math.pow
 import kotlin.math.sin
 
 @Composable
-fun Heart(modifier: Modifier = Modifier) {
+fun ILoveYouScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Canvas(modifier = Modifier.padding(16.dp)) {
-            val canvasWidth = size.width
-            val canvasHeight = size.height
-            val heartSize = canvasWidth.coerceAtMost(canvasHeight) * 0.8f
-
-            val heartPath = createHeartPath(heartSize)
-
-            drawPath(
-                path = heartPath,
-                color = Color.Red,
-            )
-        }
+        Heart(Modifier.padding(16.dp))
         Text(
             text = "I love you!",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Red
+        )
+    }
+}
+
+@Composable
+private fun Heart(modifier: Modifier) {
+    Canvas(modifier = modifier) {
+        val canvasWidth = size.width
+        val canvasHeight = size.height
+        val heartSize = canvasWidth.coerceAtMost(canvasHeight) * 0.8f
+
+        val heartPath = createHeartPath(heartSize)
+
+        drawPath(
+            path = heartPath,
+            color = Color.Red,
         )
     }
 }
@@ -80,6 +85,6 @@ private fun Double.pow(n: Int): Double {
 
 @Preview(showBackground = true)
 @Composable
-fun HeartPreview() {
-    Heart()
+fun ILoveYouScreenPreview() {
+    ILoveYouScreen()
 }
