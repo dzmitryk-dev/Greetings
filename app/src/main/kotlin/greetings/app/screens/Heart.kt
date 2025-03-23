@@ -77,14 +77,15 @@ private fun createHeartPath(size: Float): Path {
     return path
 }
 
-private fun Double.pow(n: Int): Double {
-    var res = 1.0
-    repeat(n) { res *= this }
-    return res
+
+@Preview
+@Composable
+private fun HeartPreview(){
+    Heart(modifier = Modifier.padding(16.dp).fillMaxSize())
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ILoveYouScreenPreview() {
+private fun ILoveYouScreenPreview() {
     ILoveYouScreen()
 }
