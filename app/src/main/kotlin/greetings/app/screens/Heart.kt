@@ -1,11 +1,12 @@
 package greetings.app.screens
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,8 +30,15 @@ fun ILoveYouScreen(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Heart(modifier = Modifier.padding(16.dp))
+        Heart(
+            modifier = Modifier
+                .fillMaxHeight(fraction = 0.5f)
+                .fillMaxWidth()
+                .align(Alignment.CenterHorizontally)
+                .padding(16.dp)
+        )
         Text(
+            modifier = Modifier.padding(top = 16.dp),
             text = "I love you!",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
@@ -46,7 +54,7 @@ private fun Heart(modifier: Modifier) {
         val canvasHeight = size.height
         val heartSize = canvasWidth.coerceAtMost(canvasHeight) * 0.8f
 
-        val heartPath = createHeartPath(heartSize)
+        val heartPath = createHeartPath(heartSize, canvasWidth, canvasHeight)
 
         drawPath(
             path = heartPath,
@@ -55,10 +63,10 @@ private fun Heart(modifier: Modifier) {
     }
 }
 
-private fun createHeartPath(size: Float): Path {
+private fun createHeartPath(size: Float, canvasWidth: Float, canvasHeight: Float): Path {
     val path = Path()
-    val centerX = size / 2
-    val centerY = size / 2
+    val centerX = canvasWidth / 2 // Use canvasWidth for centering
+    val centerY = canvasHeight / 2 // Use canvasHeight for centering
     val radius = size / 2
     val step = 0.01
     var t = 0.0
@@ -79,11 +87,19 @@ private fun createHeartPath(size: Float): Path {
     return path
 }
 
+private fun Double.pow(n: Int): Double {
+    var res = 1.0
+    repeat(n) { res *= this }
+    return res
+}
+
 
 @Preview
 @Composable
 private fun HeartPreview(){
-    Heart(modifier = Modifier.padding(16.dp).fillMaxSize())
+    Heart(modifier = Modifier
+        .padding(16.dp)
+        .fillMaxSize())
 }
 
 @Preview(showBackground = true)
