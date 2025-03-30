@@ -40,7 +40,7 @@ fun ILoveYouScreen(modifier: Modifier = Modifier) {
         Text(
             modifier = Modifier.padding(top = 16.dp),
             text = "I love you!",
-            fontSize = 24.sp,
+            fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Red
         )
@@ -52,7 +52,7 @@ private fun Heart(modifier: Modifier) {
     Canvas(modifier = modifier) {
         val canvasWidth = size.width
         val canvasHeight = size.height
-        val heartSize = canvasWidth.coerceAtMost(canvasHeight) * 0.8f
+        val heartSize = canvasWidth.coerceAtMost(canvasHeight)
 
         val heartPath = createHeartPath(heartSize, canvasWidth, canvasHeight)
 
@@ -85,12 +85,6 @@ private fun createHeartPath(size: Float, canvasWidth: Float, canvasHeight: Float
 
     path.close()
     return path
-}
-
-private fun Double.pow(n: Int): Double {
-    var res = 1.0
-    repeat(n) { res *= this }
-    return res
 }
 
 
